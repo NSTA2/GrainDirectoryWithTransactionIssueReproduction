@@ -19,13 +19,13 @@ for (int i = 0; i < 10; i++)
 }
 
 
-// Grain 2:  transactions enabled, but no grain directory
+// Grain 2:  transactions enabled (with grain directory attribute applied)
 Console.WriteLine("With Directory:");
 var clientB = client.GetGrain<ITransactionGrainWithDirectory>("B");
 for (int i = 0; i < 10; i++)
 {
-    // this line fails: the only difference being that the second grain type uses 
     /*
+        The next line fails: the only difference being that the second grain type uses a persisted grain directory
 
         Orleans.Runtime.OrleansMessageRejectionException: 
         'Forwarding failed: tried to forward message Request [S127.0.0.1:11111:27517279 sys.client/hosted-127.0.0.1:11111@27517279]->[S127.0.0.1:11111:27517279 transactiongrainwithdirectory/B]
